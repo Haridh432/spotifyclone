@@ -1,0 +1,37 @@
+{% extends 'accounts/base.html' %}
+{% block title %}Sign up - Spotify Clone{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width:420px; margin: 0 auto;">
+  <h2 style="color:#1DB954; margin-top:0;">Create account</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="row">
+      <label>Username</label>
+      {{ form.username }}
+      {{ form.username.errors }}
+    </div>
+    <div class="row">
+      <label>Email</label>
+      {{ form.email }}
+      {{ form.email.errors }}
+    </div>
+    <div class="row">
+      <label>Password</label>
+      {{ form.password1 }}
+      {{ form.password1.errors }}
+    </div>
+    <div class="row">
+      <label>Confirm password</label>
+      {{ form.password2 }}
+      {{ form.password2.errors }}
+    </div>
+    <button type="submit" class="btn">Sign up</button>
+  </form>
+
+  <div style="margin-top:12px; color:#999;">
+    Already have an account? <a href="{% url 'login' %}">Log in</a>
+  </div>
+</div>
+{% endblock %}

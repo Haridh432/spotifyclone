@@ -1,0 +1,28 @@
+{% extends 'accounts/base.html' %}
+{% block title %}Home - Spotify Clone{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }} 👋</h2>
+
+<div style="display:flex; gap:16px; flex-wrap:wrap;">
+  {% for song in songs %}
+    <div class="card" style="width:320px;">
+      {% if song.cover_image %}
+        <img src="{{ song.cover_image.url }}" alt="Cover" style="width:100%; border-radius:8px;">
+      {% endif %}
+      <div style="margin-top:10px;">
+        <strong>{{ song.title }}</strong><br>
+        <small style="color:#aaa;">{{ song.artist }}</small>
+      </div>
+      <div style="margin-top:10px;">
+        <audio controls style="width:100%;">
+          <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+  {% empty %}
+    <p>No songs uploaded yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

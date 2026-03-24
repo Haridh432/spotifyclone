@@ -1,0 +1,24 @@
+{% extends 'accounts/base.html' %}
+{% block title %}Login - Spotify Clone{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width:380px; margin: 0 auto;">
+  <h2 style="color:#1DB954; margin-top:0;">Spotify</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="row">
+      <label for="username">Email or Username</label>
+      <input type="text" name="username" id="username" placeholder="Email or Username" required>
+    </div>
+    <div class="row">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password" required>
+    </div>
+    <button type="submit" class="btn">Log in</button>
+  </form>
+
+  <div style="margin-top:12px; color:#999;">
+    Don't have an account? <a href="{% url 'signup' %}">Sign up</a>
+  </div>
+</div>
+{% endblock %}
